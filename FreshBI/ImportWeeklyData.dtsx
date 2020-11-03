@@ -1,0 +1,1043 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/16/2020 12:17:23 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ARUS-001"
+  DTS:CreatorName="ARUS-001\elan"
+  DTS:DTSID="{AE394F2C-51A0-4F38-A5D9-1D36104B7F71}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.123"
+  DTS:LocaleID="16393"
+  DTS:ObjectName="ImportWeeklyData"
+  DTS:PackageType="5"
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{2FDF9FA9-3470-4022-BF14-0B98E3A57612}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[WeeklyFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{B2A8C652-A9FD-4A83-AEDD-A2B25CE2CAB1}"
+      DTS:ObjectName="WeeklyFile">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::WeeklyConnectionString]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="16393"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\Arus Innovation\Consulting Services\Upwork\Ahmed\Data\Weekly\Hours Control new v2.0 - 2020-10-09T120028.706.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Company Code"
+              DTS:DTSID="{880B75DE-E902-4E9D-8D66-9AB3990AC4BF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Department"
+              DTS:DTSID="{7533E9E3-88B8-4381-802B-0E2E9B2B21A0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="File Number"
+              DTS:DTSID="{45F71235-D6ED-44F3-9DEA-E25B7C4C69F5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Pay Date"
+              DTS:DTSID="{73827137-4D7B-497E-AA26-3C4C64A4FA50}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Pay Code"
+              DTS:DTSID="{1773F086-0537-46FC-AC01-E1B5677F779D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Hours"
+              DTS:DTSID="{CD3DA289-8148-4666-B5D1-4E54B5CA16BD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Dollars"
+              DTS:DTSID="{E1143D5F-DBD4-44E7-8DE7-D06E8075CBF4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Description"
+              DTS:DTSID="{74E0DBB2-F74B-4988-8E6D-556F9AFB52BF}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{36CAA139-87B2-4852-B45C-CC428EDBD34B}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::WeeklyFilePath] + &quot;\\&quot; +  @[User::WeeklyFileName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="WeeklyConnectionString">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\Arus Innovation\Consulting Services\Upwork\Ahmed\Data\Weekly\Hours Control new v2.0 - 2020-10-09T120028.706.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F09FD938-3B3E-48E1-A10B-C8A404FA1B1E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="WeeklyFileName">
+      <DTS:VariableValue
+        DTS:DataType="8">Hours Control new v2.0 - 2020-10-09T120028.706.csv</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{8642183B-FCB3-44D1-A020-B961130E2A1E}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{F227D316-1497-49CD-B84E-16FB067A43B3}"
+        DTS:ObjectName="{F227D316-1497-49CD-B84E-16FB067A43B3}">
+        <DTS:PropertyExpression
+          DTS:Name="Directory">@[$Project::WeeklyFilePath]</DTS:PropertyExpression>
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="D:\Arus Innovation\Consulting Services\Upwork\Ahmed\Data\Weekly" />
+            <FEFEProperty
+              FileSpec="*.csv" />
+            <FEFEProperty
+              FileNameRetrievalType="1" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Load Weekly Data"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{2BC1A6B8-F7C9-4B5B-A191-029CD3242B41}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load Weekly Data"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Foreach Loop Container\Load Weekly Data\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Load Weekly Data\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Load Weekly Data\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Foreach Loop Container\Load Weekly Data\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Derived Column.Outputs[Derived Column Output].Columns[WeeklyFileName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="4000"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Derived Column.Outputs[Derived Column Output].Columns[WeeklyFileName]"
+                          name="WeeklyFileName"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_STR,4000,1252)@[User::WeeklyFileName]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_STR,4000,1252)@[User::WeeklyFileName]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Load Weekly Data\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\Load Weekly Data\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="16393"
+                  name="Flat File Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[WeeklyFile]"
+                      connectionManagerRefId="Package.ConnectionManagers[WeeklyFile]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Company Code]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Company Code]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Company Code]"
+                          name="Company Code"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Department]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Department]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Department]"
+                          name="Department"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[File Number]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[File Number]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[File Number]"
+                          name="File Number"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Pay Date]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Pay Date]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Pay Date]"
+                          name="Pay Date"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Pay Code]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Pay Code]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Pay Code]"
+                          name="Pay Code"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Hours]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Hours]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Hours]"
+                          name="Hours"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Dollars]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Dollars]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Dollars]"
+                          name="Dollars"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Description]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Description]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Description]"
+                          name="Description"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Company Code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Company Code" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Department]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Department" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[File Number]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="File Number" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Pay Date]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Pay Date" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Pay Code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Pay Code" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Hours]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Hours" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Dollars]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Dollars" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Description]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Description" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[WeeklyADPData]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{616C3DE9-7E41-4A32-B417-1A6A4C0D878C}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ARUS-001.FreshBI]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Company Code]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Company Code"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Company Code]"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Company Code]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Department]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Department"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Department]"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Department]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[File Number]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="File Number"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[File Number]"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[File Number]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Pay Date]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Pay Date"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pay Date]"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Pay Date]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Pay Code]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Pay Code"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pay Code]"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Pay Code]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Hours]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Hours"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Hours]"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Hours]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Dollars]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Dollars"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Dollars]"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Dollars]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Description]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Description"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output].Columns[Description]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WeeklyFileName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="4000"
+                          cachedName="WeeklyFileName"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WeeklyFileName]"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\Derived Column.Outputs[Derived Column Output].Columns[WeeklyFileName]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Company Code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Company Code" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Department]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Department" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[File Number]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="File Number" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pay Date]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Pay Date" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pay Code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Pay Code" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Hours]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Hours" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Dollars]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Dollars" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Description" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sno]"
+                          dataType="i4"
+                          name="Sno" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WeeklyFileName]"
+                          codePage="1252"
+                          dataType="text"
+                          name="WeeklyFileName" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LoadDateTime]"
+                          dataType="dbTimeStamp"
+                          name="LoadDateTime" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Foreach Loop Container\Load Weekly Data.Paths[Derived Column Output]"
+                  endId="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Foreach Loop Container\Load Weekly Data\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Foreach Loop Container\Load Weekly Data.Paths[Flat File Source Output]"
+                  endId="Package\Foreach Loop Container\Load Weekly Data\Derived Column.Inputs[Derived Column Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Foreach Loop Container\Load Weekly Data\Flat File Source.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Merge ADP Data"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{154D4A45-917A-41DE-BCC2-41341194D260}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Merge ADP Data"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{616C3DE9-7E41-4A32-B417-1A6A4C0D878C}"
+              SQLTask:SqlStatementSource="EXEC [dbo].[usp_MergeADPData]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Truncate Staging"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{EDF2765C-5A4F-4CE0-A91F-FDCB723CF8CD}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Staging"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{616C3DE9-7E41-4A32-B417-1A6A4C0D878C}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.WeeklyADPData" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{14F38C37-C3CA-4B2D-BBDD-2F1747015B58}"
+          DTS:From="Package\Foreach Loop Container\Truncate Staging"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach Loop Container\Load Weekly Data" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{636CFEC7-0837-48CF-85AE-9EDBD44C72BF}"
+          DTS:From="Package\Foreach Loop Container\Load Weekly Data"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Foreach Loop Container\Merge ADP Data" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{60ED9755-7CD4-4D5E-B531-279090858D61}"
+          DTS:ObjectName="{60ED9755-7CD4-4D5E-B531-279090858D61}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::WeeklyFileName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Foreach Loop Container\Load Weekly Data"
+          TopLeft="350.842869781475,62.8411804387326" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\Foreach Loop Container\Merge ADP Data"
+          TopLeft="608.914299094921,65.3058856025287" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Foreach Loop Container\Truncate Staging"
+          TopLeft="55.8000046832219,60.1529452625855" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          TopLeft="218.200004683222,82.297062850659">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="132.642865098253,0"
+              Start="0,0"
+              End="125.142865098253,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="125.142865098253,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="514.042869781475,84.8735330206306">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="94.871429313446,0"
+              Start="0,0"
+              End="87.371429313446,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="87.371429313446,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="783.2,197.6"
+          Size="783.2,240.8"
+          Id="Package\Foreach Loop Container"
+          TopLeft="176.428574433132,123.117648785502" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\Load Weekly Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Foreach Loop Container\Load Weekly Data\Flat File Source"
+          TopLeft="262.5,41.5" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination"
+          TopLeft="642.214285981898,298.558824483911" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Foreach Loop Container\Load Weekly Data\Derived Column"
+          TopLeft="403.571435444209,165.941178797851" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Load Weekly Data.Paths[Flat File Source Output]"
+          TopLeft="337.7,83.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="142.271435444209,82.8411787978506"
+              Start="0,0"
+              End="142.271435444209,75.3411787978506">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.4205893989253" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.4205893989253"
+                    Point2="0,41.4205893989253"
+                    Point3="4,41.4205893989253" />
+                  <mssgle:LineSegment
+                    End="138.271435444209,41.4205893989253" />
+                  <mssgle:CubicBezierSegment
+                    Point1="138.271435444209,41.4205893989253"
+                    Point2="142.271435444209,41.4205893989253"
+                    Point3="142.271435444209,45.4205893989253" />
+                  <mssgle:LineSegment
+                    End="142.271435444209,75.3411787978506" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Load Weekly Data.Paths[Derived Column Output]"
+          TopLeft="479.971435444209,207.541178797851">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="247.442850537689,91.0176456860605"
+              Start="0,0"
+              End="247.442850537689,83.5176456860605">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5088228430303" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.5088228430303"
+                    Point2="0,45.5088228430303"
+                    Point3="4,45.5088228430303" />
+                  <mssgle:LineSegment
+                    End="243.442850537689,45.5088228430303" />
+                  <mssgle:CubicBezierSegment
+                    Point1="243.442850537689,45.5088228430303"
+                    Point2="247.442850537689,45.5088228430303"
+                    Point3="247.442850537689,49.5088228430303" />
+                  <mssgle:LineSegment
+                    End="247.442850537689,83.5176456860605" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Load Weekly Data\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
